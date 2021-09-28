@@ -13,7 +13,7 @@ class AutoriaSpider(Spider):
     def parse(self, response):
         for car in response.css("div.content-bar"):
             model = car.css(".blue.bold::text").get()
-            year = car.css(".address::text").get()
+            year = car.css('div.head-ticket a[class="address"]::text')[1].get().strip()
             race = car.css(".js-race::text").get()
             price_uan = car.css(".i-block span::text").get()
             price_usd = car.css(".size22:nth-child(1)::text").get()
